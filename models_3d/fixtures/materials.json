@@ -1,0 +1,12 @@
+[
+  {"model": "models_3d.material", "pk": 3, "fields": {"name": "PLA+", "brand": 1, "price_per_gram": "2.50", "colors": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 17, 18, 19, 23, 24, 25, 31, 35, 36, 40, 41, 52, 53, 54], "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z"}},
+  {"model": "models_3d.material", "pk": 4, "fields": {"name": "PETG", "brand": 2, "price_per_gram": "2.80", "colors": [1, 2, 4, 5, 6, 8, 10, 11, 20, 28, 50, 51], "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z"}},
+  {"model": "models_3d.material", "pk": 5, "fields": {"name": "TPU 95A (Flex)", "brand": 1, "price_per_gram": "4.50", "colors": [1, 4, 5, 6, 7, 8, 9, 10], "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z"}},
+  {"model": "models_3d.material", "pk": 6, "fields": {"name": "ASA (UV Resistant)", "brand": 4, "price_per_gram": "5.00", "colors": [4, 5, 6, 11, 17, 22, 29], "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z"}},
+  {"model": "models_3d.material", "pk": 7, "fields": {"name": "PC Blend (Polycarbonate)", "brand": 6, "price_per_gram": "8.00", "colors": [4, 5, 11, 28], "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z"}},
+  {"model": "models_3d.material", "pk": 8, "fields": {"name": "PLA Silk", "brand": 9, "price_per_gram": "3.80", "colors": [2, 3, 7, 8, 12, 13, 14, 18, 27, 41, 49], "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z"}},
+  {"model": "models_3d.material", "pk": 9, "fields": {"name": "Wood PLA", "brand": 5, "price_per_gram": "4.20", "colors": [11, 16, 37], "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z"}},
+  {"model": "models_3d.material", "pk": 10, "fields": {"name": "PA12-CF (Carbon Fiber Nylon)", "brand": 8, "price_per_gram": "15.50", "colors": [4, 17, 56], "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z"}},
+  {"model": "models_3d.material", "pk": 11, "fields": {"name": "PLA Matte", "brand": 11, "price_per_gram": "3.20", "colors": [4, 5, 6, 8, 17, 20, 21, 32, 44], "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z"}},
+  {"model": "models_3d.material", "pk": 12, "fields": {"name": "Resin (Фотополимер)", "brand": 15, "price_per_gram": "7.00", "colors": [4, 5, 6, 11, 28], "created_at": "2024-01-01T00:00:00Z", "updated_at": "2024-01-01T00:00:00Z"}}
+]

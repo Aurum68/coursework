@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная - 3D Shop{% endblock %}
+
+{% block content %}
+    <!-- Hero блок -->
+    <div class="hero">
+        <h1>3D-печать на заказ</h1>
+        <p>Готовые модели или ваш STL — лучшие материалы и точность до 0.1 мм</p>
+        <a href="{% url 'models' %}" class="btn btn-primary">Начать выбор</a>
+    </div>
+
+    <!-- Популярные модели -->
+    <h2 class="section-title">🔥 Популярные модели</h2>
+    <div class="card-grid">
+        {% for model in models %}
+        <div class="card">
+            <div class="card-img" ><img src="{{ model.image.url }}" alt="{{ model.name }}"></div>
+            <div class="card-content">
+                <div class="card-title">{{ model.name}}</div>
+                <div class="card-price">от {{ model.price }} ₽</div>
+                <a href="/models/{{ model.id }}/" class="btn btn-outline">Подробнее</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Преимущества -->
+    <div class="advantages">
+        <div class="advantage-item">
+            <div class="advantage-icon">🖨️</div>
+            <h3>10+ принтеров</h3>
+            <p class="text-dim">Смола, пластик, нейлон</p>
+        </div>
+        <div class="advantage-item">
+            <div class="advantage-icon">🎨</div>
+            <h3>50+ цветов</h3>
+            <p class="text-dim">Pantone, матовые, глянец</p>
+        </div>
+        <div class="advantage-item">
+            <div class="advantage-icon">⚡</div>
+            <h3>Скоростная печать</h3>
+            <p class="text-dim">От 24 часов</p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if messages %}
+            <div class="messages-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <h1 class="cart-page-title">Ваша Корзина</h1>
+
+        {% if cart.get_items %}
+            <div class="cart-layout">
+                <div class="cart-items-list">
+                    {% for item in cart.get_items %}
+                        {% include 'order/cart/cart_item.html' with item=item %}
+                    {% endfor %}
+                </div>
+
+                <div class="cart-summary">
+                    <h3>Итоги заказа</h3>
+                    <div class="summary-row">
+                        <span>Товары (<span id="total-items-count">{{ cart.total_items }}</span>)</span>
+                        <span id="subtotal-price">{{ cart.total_cart_price }} ₽</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Доставка</span>
+                        <span>Бесплатно</span>
+                    </div>
+                    <hr class="summary-divider">
+                    <div class="summary-row total">
+                        <span>Итого</span>
+                        <span id="total-price">{{ cart.total_cart_price }} ₽</span>
+                    </div>
+                    <form method="post" action="{% url 'create_order' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary btn-checkout">Оформить заказ</button>
+
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            {% include 'order/cart/cart_empty.html' %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/cart.js' %}"></script>
+{% endblock %}

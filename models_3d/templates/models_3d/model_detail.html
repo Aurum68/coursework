@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load l10n %}
+
+{% block title %}Модель: {{ model.name }}{% endblock %}
+
+{% block content %}
+    <div class="model-detail-layout">
+        <div class="model-preview">
+            <img src="{{ model.image.url }}" alt="{{ model.name }}">
+        </div>
+        <div class="model-info">
+            <form method="post" action="{% url 'add_to_cart' model.pk %}">
+                {% csrf_token %}
+                <h1>{{ model.name }}</h1>
+                <div class="form-group">
+                    {{ form.material.label_tag }}
+                    {{ form.material.errors }}
+                    <select id="materialSelect" name="{{ form.material.name }}">
+                        {% for material in aggregated_materials %}
+                            <option value="{{ material.name }}"
+                                data-price="{{ material.price|unlocalize }}"
+                                data-colors='[
+                                    {% for color in material.colors %}
+                                        {"id": "{{ color.id }}", "name": "{{ color.name|default:color.hex_code }}", "hex": "{{ color.hex_code }}"}
+                                        {% if not forloop.last %},{% endif %}
+                                    {% endfor %}
+                                ]'>
+                                {{ material.name }} {{ material.price }} ₽/грамм
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="custom-select-wrapper">
+                    <div class="form-group">
+                        {{ form.color.label_tag }}
+                        {{ form.color.errors }}
+
+                        {{ form.color }}
+
+                        <div class="custom-select">
+                            <div class="custom-select__trigger">
+                                <span>Выберите цвет</span>
+                                <div class="arrow"></div>
+                            </div>
+                            <div class="custom-options">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form.scale.label_tag }}
+                    {{ form.scale.errors }}
+                    {{ form.scale }}
+                </div>
+                <div class="price-display" id="priceDisplay" data-base-price="{{ model.price|unlocalize }}">
+                    {{ model.price }} ₽
+                </div>
+                <div class="model-actions">
+                    {% if user.is_authenticated %}
+                        <button type="submit" class="btn btn-primary">В корзину</button>
+                    {% else %}
+                        <a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-primary">
+                            Войдите, чтобы добавить в корзину
+                        </a>
+                    {% endif %}
+                    <a href="/custom-order/?model_id=1" class="btn btn-outline btn-disabled">Свой STL</a>
+                </div>
+            </form>
+            <hr class="divider">
+            <h3>Характеристики</h3>
+            <ul class="specs-list">
+                <li>Длина: {{ model.length }} см</li>
+                <li>Ширина: {{ model.width }} см</li>
+                <li>Высота: {{ model.height }} см</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

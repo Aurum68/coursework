@@ -1,0 +1,19 @@
+<div class="order-item">
+    <div class="order-item-image">
+        <img src="{{ item.model_3d_image.url }}" alt="{{ item.model_3d_name }}">
+    </div>
+    <div class="order-item-details">
+        <h3 class="order-item-title">{{ item.model_3d_name }}</h3>
+        <div class="order-item-specs">
+            <span>Цвет: {{ item.color_name }}</span>
+            <span>Материал: {{ item.material_name }}</span>
+        </div>
+        <div class="order-item-specs">
+            <span>Масштаб: {{ item.scale }}%</span>
+        </div>
+    </div>
+    <span class="order-detail-meta">{{ item.quantity }}</span>
+    <div class="order-item-price">
+        {{ item.price }} ₽
+    </div>
+</div>

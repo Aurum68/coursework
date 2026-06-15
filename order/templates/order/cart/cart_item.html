@@ -1,0 +1,33 @@
+<div class="cart-item" data-item-key="{{ item.item_key }}">
+    <div class="cart-item-image">
+        <img src="{{ item.model.image.url }}" alt="{{ item.model.name }}">
+    </div>
+    <div class="cart-item-details">
+        <h3 class="cart-item-title">{{ item.model.name }}</h3>
+        <div class="cart-item-specs">
+            <span>Цвет: {{ item.color.name }}</span>
+            <span>Материал: {{ item.material }}</span>
+        </div>
+        <div class="cart-item-scale">
+            <label for="scale-{{ item.item_key }}">Масштаб: <span class="scale-value">{{ item.scale }}</span>%</label>
+            <input type="range"
+                   id="scale-{{ item.item_key }}"
+                   class="scale-slider"
+                   min="50" max="200" step="10"
+                   value="{{ item.scale }}">
+        </div>
+    </div>
+    <div class="cart-item-actions">
+        <div class="quantity-control">
+            <button class="quantity-btn minus">-</button>
+            <label>
+                <input type="text" class="quantity-input" value="{{ item.quantity }}" readonly>
+            </label>
+            <button class="quantity-btn plus">+</button>
+        </div>
+        <div class="cart-item-price" data-base-price="{{ item.price_per_unit }}">
+            {{ item.total_price }} ₽
+        </div>
+        <button class="remove-item-btn">🗑️</button>
+    </div>
+</div>

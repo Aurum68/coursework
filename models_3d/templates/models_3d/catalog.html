@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Каталог 3D моделей{% endblock %}
+
+{% block content %}
+    <div class="catalog-layout">
+        <!-- Фильтры -->
+        <aside class="filters-sidebar">
+            <h3>Фильтры</h3>
+            <div class="form-group">
+                <label for="priceFilter">Цена</label>
+                <select id="priceFilter">
+                    <option>Любая</option>
+                    <option>до 500 ₽</option>
+                    <option>500-2000</option>
+                </select>
+            </div>
+            <button class="btn btn-outline btn-disabled">Применить (В разработке)</button>
+        </aside>
+
+        <!-- Сетка карточек -->
+        <div class="catalog-main">
+            <div class="catalog-header">
+                <h2>Готовые модели</h2>
+                <label for="sortDateOrder"></label>
+                <select id="sortDateOrder" class="sort-select">
+                    <option>Сначала новые</option>
+                    <option>Дешевле</option>
+                    <option>Дороже</option>
+                </select>
+            </div>
+            <div class="card-grid">
+                {% for model in models %}
+                <div class="card">
+                    <div class="card-img"><img src="{{ model.image.url }}" alt="{{ model.name }}"></div>
+                    <div class="card-content">
+                        <div class="card-title">{{ model.name }}</div>
+                        <div class="card-price">{{ model.price }}0 ₽</div>
+                        <p class="text-dim">Размер: {{ model.length }}x{{ model.width }}x{{ model.height }} мм</p>
+                        <a href="/models/{{ model.id }}/" class="btn btn-outline">Выбрать</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

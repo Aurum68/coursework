@@ -1,0 +1,8 @@
+Django~=5.2.14
+Pillow~=12.2.0
+psycopg2-binary~=2.9.12
+django-colorfield~=0.14.0
+phonenumbers~=9.0.30
+django-phonenumber-field~=8.4.0
+babel~=2.18.0
+django-widget-tweaks~=1.5.1

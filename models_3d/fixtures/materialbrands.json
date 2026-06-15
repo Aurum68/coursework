@@ -1,0 +1,17 @@
+[
+{"model": "models_3d.materialbrand", "pk": 1, "fields": {"name": "eSUN", "country_id": 1}},
+{"model": "models_3d.materialbrand", "pk": 2, "fields": {"name": "Bestfilament", "country_id": 6}},
+{"model": "models_3d.materialbrand", "pk": 3, "fields": {"name": "REC", "country_id": 6}},
+{"model": "models_3d.materialbrand", "pk": 4, "fields": {"name": "Polymaker", "country_id": 2}},
+{"model": "models_3d.materialbrand", "pk": 5, "fields": {"name": "Overture", "country_id": 2}},
+{"model": "models_3d.materialbrand", "pk": 6, "fields": {"name": "Prusa", "country_id": 3}},
+{"model": "models_3d.materialbrand", "pk": 7, "fields": {"name": "Extrudr", "country_id": 7}},
+{"model": "models_3d.materialbrand", "pk": 8, "fields": {"name": "Spectrum Filaments", "country_id": 12}},
+{"model": "models_3d.materialbrand", "pk": 9, "fields": {"name": "Formfutura", "country_id": 7}},
+{"model": "models_3d.materialbrand", "pk": 10, "fields": {"name": "Devil Design", "country_id": 12}},
+{"model": "models_3d.materialbrand", "pk": 11, "fields": {"name": "Fillamentum", "country_id": 3}},
+{"model": "models_3d.materialbrand", "pk": 12, "fields": {"name": "BASF", "country_id": 4}},
+{"model": "models_3d.materialbrand", "pk": 13, "fields": {"name": "Mitsubishi Chemical", "country_id": 5}},
+{"model": "models_3d.materialbrand", "pk": 14, "fields": {"name": "3D4Makers", "country_id": 7}},
+{"model": "models_3d.materialbrand", "pk": 15, "fields": {"name": "Zortrax", "country_id": 12}}
+]

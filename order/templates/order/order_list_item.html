@@ -1,0 +1,34 @@
+{% load static %}
+
+<div class="order-card">
+    <div class="order-preview-images">
+        {% with first_order_item=order.orderitem_set.all.0 %}
+            {% if first_order_item and first_order_item.model_3d_image %}
+                <img src="{{ first_order_item.model_3d_image.url }}" alt="Обложка заказа №{{ order.id }}">
+            {% else %}
+                <img src="{% static 'image/placeholder.png' %}" alt="Заказ №{{ order.id }}">
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="order-details">
+
+        <div class="order-info">
+            <h3>Заказ №{{ order.id }}</h3>
+            <div class="order-meta">
+                <span>от {{ order.created_at|date:"d.m.Y" }}</span>
+                <span>Товаров: {{ order.items_count }}</span>
+            </div>
+            <span class="order-status">{{ order.get_status_display }}</span>
+        </div>
+
+        <div class="order-total-price">
+            {{ order.total_price }} ₽
+        </div>
+
+        <div class="order-card-actions">
+            <a href="{% url 'order_detail' order.id%}" class="btn btn-secondary">Подробнее</a>
+        </div>
+
+    </div>
+</div>

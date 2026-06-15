@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Заказ №{{ order.id }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="order-detail-header">
+
+            <div class="order-header-info">
+                <h1 class="order-detail-title">Заказ №{{ order.id }}</h1>
+                <p class="order-date-meta">от {{ order.created_at|date:"d E Y г. в H:i" }}</p>
+            </div>
+
+            <div class="order-header-summary">
+                <div class="order-total-price-big">{{ order.total_price }} ₽</div>
+                <span class="order-status">{{ order.get_status_display }}</span>
+            </div>
+
+        </div>
+        <div class="order-detail-layout">
+            <div class="order-items-list">
+                {% for item in order.orderitem_set.all %}
+                    {% include 'order/order_item.html' with item=item %}
+                {% endfor %}
+            </div>
+        </div>
+        {% if order.status == statuses.PROCESSING or order.status == statuses.AWAITING_PAYMENT %}
+            <div class="order-actions">
+                <form action="{% url 'cancel_order' order.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger-outline btn-block">
+                        Отменить заказ
+                    </button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+

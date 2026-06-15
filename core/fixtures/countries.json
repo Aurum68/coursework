@@ -1,0 +1,17 @@
+[
+{"model": "core.country", "pk": 1, "fields": {"name": "Китай"}},
+{"model": "core.country", "pk": 2, "fields": {"name": "США"}},
+{"model": "core.country", "pk": 3, "fields": {"name": "Чехия"}},
+{"model": "core.country", "pk": 4, "fields": {"name": "Германия"}},
+{"model": "core.country", "pk": 5, "fields": {"name": "Япония"}},
+{"model": "core.country", "pk": 6, "fields": {"name": "Россия"}},
+{"model": "core.country", "pk": 7, "fields": {"name": "Нидерланды"}},
+{"model": "core.country", "pk": 8, "fields": {"name": "Канада"}},
+{"model": "core.country", "pk": 9, "fields": {"name": "Испания"}},
+{"model": "core.country", "pk": 10, "fields": {"name": "Франция"}},
+{"model": "core.country", "pk": 11, "fields": {"name": "Великобритания"}},
+{"model": "core.country", "pk": 12, "fields": {"name": "Польша"}},
+{"model": "core.country", "pk": 13, "fields": {"name": "Швейцария"}},
+{"model": "core.country", "pk": 14, "fields": {"name": "Тайвань"}},
+{"model": "core.country", "pk": 15, "fields": {"name": "Австрия"}}
+]

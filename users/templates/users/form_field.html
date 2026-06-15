@@ -1,0 +1,12 @@
+{% load widget_tweaks %}
+
+<div class="form-field {% if field.widget.attrs.is_full_width %}full-width{% endif %}">
+    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+    {% if field.name == 'phone' %}
+        <div class="phone-field-container">
+            {{ field|add_class:"form-control" }}
+        </div>
+    {% else %}
+        {{ field|add_class:"form-control" }}
+    {% endif %}
+</div>

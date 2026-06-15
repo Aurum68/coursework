@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Мой профиль{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">Профиль пользователя</h1>
+
+    <div class="profile-layout">
+        <div class="profile-main">
+            <div class="card">
+                <div class="card-content">
+                    <h2 class="section-title">Личные данные</h2>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Имя</label>
+                            <p>{{ user.first_name|default:"Не указано" }}</p>
+                        </div>
+                        <div class="info-item">
+                            <label>Фамилия</label>
+                            <p>{{ user.last_name|default:"Не указана" }}</p>
+                        </div>
+                        <div class="info-item full-width">
+                            <label>Email</label>
+                            <p>{{ user.email }}</p>
+                        </div>
+                        <div class="info-item full-width">
+                            <label>Телефон</label>
+                            <p>{{ user.phone|default:"Не указан" }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-actions">
+                        <a href="{% url 'profile_edit' %}" class="btn btn-outline">Редактировать профиль</a>
+{#                        <a href="{% url 'password_change' %}" class="btn btn-outline">Сменить пароль</a>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-sidebar">
+            <div class="card balance-card">
+                <div class="card-content">
+                    <h3 class="balance-title">Ваш баланс</h3>
+                    <div class="balance-amount">
+                        <span>{{ user.balance }}</span>
+                        <img class="currency-icon" src="{% static 'image/printcoin.png' %}" alt="PC">
+                    </div>
+                    <a href="#" id="show-deposit-form-btn" class="btn btn-primary btn-block">Пополнить</a>
+                    <div id="deposit-form-container" class="deposit-form">
+                        <form method="post" action="{% url 'balance_replenishment' %}">
+                            {% csrf_token %}
+                            <div class="form-field">
+                                <label for="id_amount">Сумма пополнения</label>
+                                <input type="number" name="amount" id="id_amount" class="form-input" placeholder="Введите сумму" min="1" required>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block">Подтвердить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h2 class="section-title">Мои заказы</h2>
+                    {% if orders %}
+                        {% for order in orders %}
+                            <a href="{% url 'order_detail' order.id %}" class="profile-order-item">
+
+                            <div class="profile-order-info">
+                                <span class="profile-order-id">Заказ №{{ order.id }}</span>
+                            </div>
+
+                            <div class="profile-order-summary">
+                                <span class="order-status">{{ order.get_status_display }}</span>
+                            </div>
+
+                        </a>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-dim">У вас пока нет активных заказов.</p>
+                    {% endif %}
+
+                    <a href="{% url 'orders' %}" class="btn btn-outline btn-block">История заказов</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        // Ждем, пока вся страница загрузится
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Находим нужные нам элементы по их ID
+            const showFormBtn = document.getElementById('show-deposit-form-btn');
+            const depositFormContainer = document.getElementById('deposit-form-container');
+
+            // Проверяем, что оба элемента существуют на странице, чтобы избежать ошибок
+            if (showFormBtn && depositFormContainer) {
+
+                // Добавляем "слушателя" на клик по кнопке "Пополнить"
+                showFormBtn.addEventListener('click', function(event) {
+                    // Предотвращаем стандартное поведение ссылки (переход по #)
+                    event.preventDefault();
+
+                    // Показываем блок с формой
+                    depositFormContainer.style.display = 'block';
+
+                    // Скрываем саму кнопку "Пополнить"
+                    showFormBtn.style.display = 'none';
+                });
+            }
+        });
+    </script>
+{% endblock %}

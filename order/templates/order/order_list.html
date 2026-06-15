@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Заказы{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="order-list-page-title">Ваши Заказы</h1>
+
+        {% if orders %}
+            <div class="orders-container">
+                {% for order in orders %}
+                    {% include 'order/order_list_item.html' with order=order %}
+                {% endfor %}
+            </div>
+        {% else %}
+            {% include 'order/order_list_empty.html' %}
+        {% endif %}
+    </div>
+{% endblock %}

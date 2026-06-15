@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom-admin.css' %}">
+{% endblock %}
+
+{% block branding %}
+    <div style="display: flex; align-items: center; gap: 15px; margin: 0; padding: 8px 0;">
+        <a href="/admin/" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
+            <img src="{% static 'image/logo.png' %}" alt="Logo" height="80">
+            <span style="font-size: 1.5rem; font-weight: bold; color: white;">{{ site_header|default:_('Django administration') }}</span>
+        </a>
+    </div>
+{% endblock %}
