@@ -55,7 +55,10 @@ def my_login(request):
 
 @login_required
 def profile(request):
-    context = {'user': request.user, 'orders': Order.objects.filter(user=request.user).order_by('created_at')[:3]}
+    context = {
+        'user': request.user,
+        'orders': Order.objects.filter(user=request.user, status=Order.OrderStatus.PROCESSING)
+                    .order_by('created_at')[:3]}
     return render(request, 'users/profile.html', context)
 
 

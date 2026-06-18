@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'colorfield',
     'phonenumber_field',
     'widget_tweaks',
-    'debug_toolbar',
 
     'models_3d',
     'core',
@@ -56,7 +55,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 INTERNAL_IPS = [

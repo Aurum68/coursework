@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let currentScale = parseInt(scaleInput.value);
 
-            let scaleFactor = Math.pow(currentScale / 100, 3);
+            let scaleFactor = currentScale / 100
 
             let finalPrice = basePrice * materialPricePerGram * scaleFactor;
 

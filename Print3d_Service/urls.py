@@ -40,7 +40,6 @@ urlpatterns = [
     path('logout/', my_logout, name='logout'),
     path('balance/',balance_replenishment, name='balance_replenishment'),
     path('add/<int:model_id>/', add_to_cart, name='add_to_cart'),
-    path('__debug__/', include('debug_toolbar.urls')),
     path('cart/', cart, name='cart'),
     path('cart/update/', update_cart, name='update_cart'),
     path('otders/create/', create_order, name='create_order'),

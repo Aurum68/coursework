@@ -158,10 +158,14 @@ def order_detail(request, order_id):
     return render(request, 'order/order_detail.html', context=context)
 
 
+@transaction.atomic
 @require_POST
 def cancel_order(request, order_id):
     order = Order.objects.get(id=order_id)
     order.status = Order.OrderStatus.CANCELLED
     order.save()
+    user = request.user
+    user.balance += order.total_price
+    user.save()
     messages.success(request, 'Order canceled.')
     return redirect('orders')
